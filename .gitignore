@@ -1,0 +1,5 @@
+.netlify/
+node_modules/
+public/
+.local-data/
+.npm-cache/

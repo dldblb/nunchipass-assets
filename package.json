@@ -1,0 +1,20 @@
+{
+  "name": "nunchipass-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/prepare.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "start": "node scripts/local-server.mjs"
+  },
+  "dependencies": {
+    "@netlify/database": "2.0.1"
+  },
+  "devDependencies": {
+    "@netlify/database-dev": "1.0.1",
+    "pg": "8.23.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
