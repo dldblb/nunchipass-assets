@@ -1,5 +1,9 @@
 import { readFile, writeFile, mkdir, cp } from 'node:fs/promises';
 let html = await readFile('index.html', 'utf8');
+// The offline export disallows network APIs and external scripts. Allow only this
+// site's script and API; keep all other original content restrictions intact.
+html = html.replace("script-src 'unsafe-inline'", "script-src 'self' 'unsafe-inline'")
+  .replace("connect-src 'none'", "connect-src 'self'");
 const content = html.match(/<script\b[^>]*id=["']content-data["'][^>]*>([\s\S]*?)<\/script>/);
 if (!content) throw new Error('Original content data not found');
 const data = JSON.parse(content[1]);

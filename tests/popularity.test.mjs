@@ -73,6 +73,8 @@ test('built page preserves article data, images and the compressed game payload'
   }
   assert.equal(built.includes('다른 사용자 기록은 반영되지 않습니다'), false);
   assert.ok(built.includes('<script src="/popularity.js"></script>'));
+  assert.ok(built.includes("connect-src 'self'"));
+  assert.ok(built.includes("script-src 'self' 'unsafe-inline'"));
 });
 test('client records a real read then renders shared ranking; refresh stays deduplicated', async () => {
   const storage = new Map();
